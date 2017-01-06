@@ -10,9 +10,20 @@ var SongQueue = Backbone.Collection.extend({
       }
     }, this);
 
-    this.on('ended dequeue', function() {
+    this.on('ended', function() {
       this.remove(this.at(0));
       if (this.length > 0) {
+        this.playFirst();
+      }
+    }, this);
+
+    this.on('dequeue', function(song) {
+      var index = this.indexOf(song);
+      if (index === 0 && this.length === 1) {
+        song.stop();
+      }
+      this.remove(song);
+      if (index === 0 && this.length > 0) {
         this.playFirst();
       }
     }, this);

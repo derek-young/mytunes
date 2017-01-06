@@ -7,7 +7,7 @@ var LibraryEntryView = Backbone.View.extend({
 
   events: {
     'click': function() {
-      this.model.play();
+      //this.model.play(); this is commented out on purpose but it breaks a test
       this.model.enqueue();
     }
 
