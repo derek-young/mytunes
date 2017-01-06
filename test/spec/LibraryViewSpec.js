@@ -39,7 +39,6 @@ describe('LibraryView', function() {
       requests = [];
       xhr = sinon.useFakeXMLHttpRequest();
       xhr.onCreate = function(request) {
-        console.log('helllllloooo')
         requests.push(request);
       };
 
