@@ -18,10 +18,16 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    return this.$el.html([
-      this.playerView.$el,
+    var $wrapper = $('<div>').attr('class', 'wrapper').html(this.playerView.$el);
+    var $holder = $('<div>').attr('class', 'holder').html($wrapper);
+    var $views = $('<div>').attr('class', 'views').html([
       this.libraryView.$el,
       this.songQueueView.$el
+    ]);
+
+    return this.$el.html([
+      $holder,
+      $views
     ]);
   }
 
